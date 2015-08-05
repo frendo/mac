@@ -1,0 +1,12 @@
+#!/bin/bash 
+# Script to display DNS cache for Mac OS X
+
+#SIGINFO signl to the process. Dumps a snapshot summary of the internal state to /var/log/system.log
+
+killall -INFO mDNSResponder
+
+#Make copy of system.log to $HOME
+
+#grep -i 'mDNSRespon' /var/log/system.log | sed 's/^.\{48\}//' > dnsCache
+pattern="mDNSRespon"
+grep -i "$pattern" /var/log/system.log | sed 's/^.\{48\}//' > dnsCache
