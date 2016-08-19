@@ -1,0 +1,3 @@
+Volumes dir
+cd iPodControl
+open F*/*
