@@ -1,0 +1,56 @@
+export PS1="\W $ "
+export PATH=${PATH}:/Users/frendo/android-sdks/tools:/Users/frendo/android-sdks/platform-tools
+alias l="ls -AlFGhps"
+alias vim='/usr/local/bin/vim'
+alias python='/Library/Frameworks/Python.framework/Versions/3.5/bin/python3.5'
+alias python='/usr/local/bin/python3'
+export GIT="https://github.com/frendo/"
+
+# Setting PATH for Python 3.5
+# The orginal version is saved in .bash_profile.pysave
+export PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
+
+# Set architecture flags
+export ARCHFLAGS="-arch x86_64"
+# Ensure user-installed binaries take precedence
+export PATH=/usr/local/bin:$PATH
+# pip should only run if there is a virtualenv currently activated
+export PIP_REQUIRE_VIRTUALENV=true
+gpip(){
+       PIP_REQUIRE_VIRTUALENV="" pip "$@"
+   }   
+export VIRTUALENVWRAPPER_PYTHON=/Library/Frameworks/Python.framework/Versions/3.5/bin/python3
+source /Library/Frameworks/Python.framework/Versions/3.5/bin/virtualenvwrapper.sh 
+
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+#export PYTHONPATH=$PYTHONPATH:/Users/gsw/.virtualenvs/ve_dev/lib/python3.5/site-packages:/Users/gsw/.virtualenvs/ve_tes/lib/python3.5/site-packages
+
+# Easily extract all compressed file types
+extract () {
+   if [ -f "$1" ] ; then
+       case $1 in
+           *.tar.bz2)   tar xvjf -- "$1"    ;;  
+           *.tar.gz)    tar xvzf -- "$1"    ;;  
+           *.bz2)       bunzip2 -- "$1"     ;;  
+           *.rar)       unrar x -- "$1"     ;;  
+           *.gz)        gunzip -- "$1"      ;;  
+           *.tar)       tar xvf -- "$1"     ;;  
+           *.tbz2)      tar xvjf -- "$1"    ;;  
+           *.tgz)       tar xvzf -- "$1"    ;;  
+           *.zip)       unzip -- "$1"       ;;  
+           *.Z)         uncompress -- "$1"  ;;  
+           *.7z)        7z x -- "$1"        ;;  
+           *)           echo "don't know how to extract '$1'..." ;;
+       esac
+   else
+       echo "'$1' is not a valid file"
+   fi  
+}
+ 
+# Get weather data for Bristol
+# You need to register at 
+# http://www.wunderground.com/weather/api/d/login.html
+# to get an API key
+weather() {
+    key=YOUR_API_KEY
