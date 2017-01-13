@@ -1,0 +1,293 @@
+terminal
+
+https://github.com/bdesham/zenburn-terminal
+
+https://sourceforge.net/projects/djvu/files/latest/download
+brew install unrar
+unrar x <file>
+
+zsh
+http://jakoblaegdsmand.com/en/blog/how-to-get-an-awesome-looking-terminal-on-mac-os-x/
+
+vim
+
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+set splitbelow
+set splitright
+
+
+:PluginInstall
+
+:vs <filename>
+:sv <filename>
+
+buffers
+:b
+:ls
+
+virtualEnvironments
+
+source ~/.virtualenvs/<venv name>
+/bin/activate
+
+which python3
+mkvirtualenv --python=/usr/local/bin/python3 tb_dev
+deactivate
+workon <name ve>
+
+pip install Django==1.8.5
+
+pip freeze
+cd $VIRTUAL_ENV/bin
+
+django
+
+django-admin.py startproject taskbuster .
+
+python manage.py runserver
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser #if needed﻿
+
+python manage.py startpap <name of app one task only!>
+
+pub
+
+import pdb
+pdb.set_trace()
+n + enter
+enter
+q - quit
+p variable
+c- continue
+l - list
+s -step into
+
+git
+
+
+07y6%=qea-70!@ayws-&2yj^5f1a6$93isf80az2-tq3@^bmq^
+git init . <x_project> folder
+git config --global user.name "Your Name"
+git config --global user.email you@example.com
+
+git add . (add files to staging area) / git add —-all .
+git status
+git rm —cached <path of file to remove>
+git commit -m <message>
+git log
+
+git remote add origin <repository url>
+git push -u origin —-all
+git push -u origin master
+git branch -a
+
+git clone https://github.com/<your-github-username>/my-first-blog.git
+
+ 
+
+
+git stash
+git pull
+git stash pop
+
+tree <project>
+$ cd my-first-blog
+
+$ virtualenv --python=python3.5 myvenv
+source myvenv/bin/activate
+pip install django~=1.9.0
+python manage.py migrate
+python manage.py createsuperuser
+
+coverage
+
+pip install coverage
+
+coverage run —-source=‘.’ manage.py test
+coverage report
+coverage html
+
+
+$ python manage.py shell
+>>> from django.conf import settings
+>>> settings.TEMPLATES
+
+zen of python
+
+python -c 'import this'
+
+homebrew
+
+brew update
+brew doctor
+brew install postgresql
+brew tap homebrew/services
+
+
+brew services start postgresql
+created
+psql
+psql -h localhost
+
+createdb <project>_db
+psql
+CREATE ROLE myusername WITH LOGIN PASSWORD 'mypassword';
+GRANT ALL PRIVILEGES ON DATABASE taskbuster_db TO myusername;
+ALTER USER myusername CREATEDB;
+
+pip3 install django psycopg2
+
+
+brew services stop postgresql
+brew services restart postgresql
+brew uninstall postgresql
+
+PostgreSQL
+
+pg_config
+sudo find / -name pg_config
+export PATH=/Library/PostgreSQL/9.3/bin:$PATH
+export PYTHONPATH=$PYTHONPATH:/Users/gsw/.virtualenvs/ve_dev/lib/python3.5/site-packages
+
+from django.contrib.sites.models import Site
+Site.objects.all()
+pip install python-social-auth
+
+
+pg_config
+which PSQL
+
+CREATE DATASBASE gsw;
+CREATE USER myprojectuser WITH PASSWORD 'password';
+ALTER USER "gsw" WITH PASSWORD 'gswgsw';
+ALTER ROLE gsw SET client_encoding TO 'utf8';
+ALTER ROLE gsw SET default_transaction_isolation TO 'read committed';
+ALTER ROLE gsw SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE gsw_db TO gsw;
+
+
+psql -h localhost
+python manage.py make migrations
+python manage.py migrate
+system integrity protection - el capitan
+csrutil status
+sudo service postgresql restart
+SELECT * FROM pg_stat_activity;
+postgres=# \c gsw_db gsw
+
+\list
+\c <name> \connect
+\dt - list tables
+
+
+Auth:
+
+AUTHENTICATION_BACKENDS = (
+    # Default backend -- used to login by username in Django admin
+    "django.contrib.auth.backends.ModelBackend",
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+Admin
+python manage.py createsuperuser
+python manage.py changepassword <user_name>
+
+>>> from django.contrib.auth import authenticate
+>>> u = authenticate(username="user", password="pass")
+>>> u.is_staff True
+>>> u.is_superuser True
+u.is_active
+
+Create An App
+**(*********
+python manage.py startapp <app>
+add app to settings INSTALLED_APPS
+
+from django.conf import settings
+print (settings.INSTALLED_APPS) 
+
+
+
+NODE JS
+
+brew install node
+brew update 
+brew update node
+node -v
+
+npm
+
+service worker
+
+idb
+sw_precache
+	npm install (main directory not app dir)
+	npm install --save-dev sw-precache
+	npm install --global sw-precache
+	nam install -g gulp
+		
+gulp.task('generate-service-worker', function(callback) {
+  var path = require('path');
+  var swPrecache = require('sw-precache');
+  var rootDir = 'app';
+
+  swPrecache.write(path.join(rootDir, 'sw.js'), {
+    staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif}'],
+    stripPrefix: rootDir
+  }, callback);
+});
+
+	gulp generate-service-worker
+
+
+gulp
+
+simpleHTTPserver
+python3 -m http.server
+
+brew
+
+brew update
+brew doctor
+
+django_setup
+
+mkdir <project_name>
+cd <project_name>
+pip install --upgrade pip.
+mkvirtualenv sb_dev
+django-admin startproject <name> .
+django-admin migrate
+
+git init
+.gitignore file
+git add -A .
+git commit -m
+git remote add origin <>
+
+python anywhere
+git clone https://github.com/frendo/sb_project.git
+virtualenv --python=python3.5 <myvenv> mkvirtualenv --python=python3.5 sb_pro
+source <myvenv>/bin/activate / workon
+pip install django==1.10
+python manage.py migrate
+
+python -m venv ve_dev
+
+django_user_agents:
+	pip install django_user_agents
+	update settings file
+	installed apps and middleware
+
+SSL:
+on server
+openssl req -new -newkey rsa:2048 -nodes -keyout geewatt.pythonanywhere.com.key -out geewatt.pythonanywhere.c
+om.csr
+
+
+
+
+
